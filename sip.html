@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SIP Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>SIP Calculator</h2>
+  <form id="sipForm">
+    <input type="number" id="amount" placeholder="Monthly Amount (₹)" required>
+    <input type="number" id="years" placeholder="Investment Period (Years)" required>
+    <button type="submit">Calculate</button>
+  </form>
+  <div id="result"></div>
+
+  <script>
+    document.getElementById("sipForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const amount = parseFloat(document.getElementById("amount").value);
+      const years = parseInt(document.getElementById("years").value);
+      const months = years * 12;
+      const totalInvested = amount * months;
+      const estimatedReturn = totalInvested * 0.12; // assume 12% growth
+      const maturity = totalInvested + estimatedReturn;
+
+      document.getElementById("result").innerHTML = `
+        <p>Total Invested: ₹${totalInvested}</p>
+        <p>Estimated Returns: ₹${estimatedReturn.toFixed(2)}</p>
+        <p>Final Maturity Amount: ₹${maturity.toFixed(2)}</p>
+      `;
+    });
+  </script>
+</body>
+</html>
+n

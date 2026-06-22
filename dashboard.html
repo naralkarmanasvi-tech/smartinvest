@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard - SmartInvest</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Dashboard</h2>
+  <div id="dashboard"></div>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem("user"));
+    if(user){
+      document.getElementById("dashboard").innerHTML = `
+        <p>Welcome, ${user.name}</p>
+        <p>Total Investment: ₹50,000</p>
+        <p>Portfolio Value: ₹55,000</p>
+        <p>Profit/Loss: +₹5,000</p>
+      `;
+    } else {
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>
